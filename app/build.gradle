@@ -30,5 +30,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-moshi:2.0.2'
+    compile 'com.squareup.moshi:moshi-adapters:1.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
 }
