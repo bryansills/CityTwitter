@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Tweet {
     public final String author;
-    public final String author_url;
+    public final String author_img;
     public final String text;
     public final Date timestamp;
 
-    public Tweet(String author, String authorUrl, String text, Date timestamp) {
+    public Tweet(String author, String author_img, String text, Date timestamp) {
         this.author = author;
-        this.author_url = authorUrl;
+        this.author_img = author_img;
         this.text = text;
         this.timestamp = timestamp;
     }
@@ -18,7 +18,7 @@ public class Tweet {
     @Override public String toString() {
         return "User{" +
                 "author='" + author + '\'' +
-                ", author_url='" + author_url + '\'' +
+                ", author_img='" + author_img + '\'' +
                 ", text='" + text + '\'' +
                 ", timestamp='" + timestamp.toString() + '\'' +
                 '}';
