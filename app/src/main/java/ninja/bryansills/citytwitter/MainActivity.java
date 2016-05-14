@@ -2,6 +2,8 @@ package ninja.bryansills.citytwitter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -10,6 +12,7 @@ import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Rfc3339DateJsonAdapter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,10 +24,20 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RecyclerView recyclerView;
+    private TweetAdapter tweetAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerView = (RecyclerView) findViewById(R.id.tweet_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        List<Tweet> items = new ArrayList<>();
+        tweetAdapter = new TweetAdapter(items);
+        recyclerView.setAdapter(tweetAdapter);
 
         Moshi moshi = new Moshi.Builder()
                 .add(Date.class, new Rfc3339DateJsonAdapter())
@@ -43,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 for (Tweet tweet : response.body()) {
                     Log.d("BLARG", tweet.toString());
                 }
-                Toast.makeText(MainActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
+                tweetAdapter.setTweetList(response.body());
             }
 
             @Override
