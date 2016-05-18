@@ -3,6 +3,7 @@
     package="ninja.bryansills.citytwitter">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".GetTweetsService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"
+                 android:exported="true" />
     </application>
 
 </manifest>
