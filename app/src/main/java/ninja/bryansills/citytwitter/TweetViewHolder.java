@@ -24,7 +24,7 @@ public class TweetViewHolder extends RecyclerView.ViewHolder {
     public static void bind(TweetViewHolder holder, Tweet tweet) {
         holder.author.setText(tweet.author);
         holder.text.setText(tweet.text);
-        holder.timestamp.setText("5m");
+        holder.timestamp.setText(TimeUtils.toTimestamp(tweet.timestamp));
 
         Picasso.with(holder.itemView.getContext())
                .load(tweet.author_img)
